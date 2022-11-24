@@ -1,21 +1,18 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 import Chartick from 'vue-chartkick'
-import { VueSpinners } from '@saeris/vue-spinners'
-import Chart from 'chart.js'
-import '@/assets/css/tailwind.css'
-import router from '@/router'
+import 'chartkick/chart.js'
+import './style.css'
+import router from './router'
 import { dollarFilter, percentFilter } from './filters'
 
+const app = createApp(App)
+app.use(router)
+app.use(Chartick)
 
-Vue.use(VueSpinners)
-Vue.use(Chartick.use(Chart))
+app.config.globalProperties.$filters = {
+  dollarFilter,
+  percentFilter
+}
 
-Vue.filter('dollar', dollarFilter)
-Vue.filter('percent', percentFilter)
-Vue.config.productionTip = false
-
-new Vue({
-  router,
-  render: h => h(App),
-}).$mount('#app')
+app.mount('#app')

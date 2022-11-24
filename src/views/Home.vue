@@ -1,13 +1,13 @@
 <template>
   <div>
-    <bounce-loader :loading="isLoading" :color="'#68d391'" :size="100"/>
-    <px-assets-table v-if="!isLoading" :assets="assets"></px-assets-table>
+    <h1 v-if="isLoading">Loading...</h1>
+    <px-assets-table v-else :assets="assets"></px-assets-table>
   </div>
 </template>
 
 <script>
-import api from "../api";
-import PxAssetsTable from "../components/PxAssetsTable.vue";
+import api from "../api"
+import PxAssetsTable from "../components/PxAssetsTable.vue"
 
 export default {
   name: "Home",

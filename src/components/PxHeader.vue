@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import PxIcon from "@/components/PxIcon";
+import PxIcon from './PxIcon.vue'
 
 export default {
   name: "PxHeader",
@@ -40,5 +40,5 @@ export default {
       default: () => []
     }
   }
-};
+}
 </script>

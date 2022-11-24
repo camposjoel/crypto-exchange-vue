@@ -1,7 +1,7 @@
 <template>
   <div class="flex-col">
     <div class="flex justify-center">
-      <bounce-loader :loading="isLoading" :color="'#68d391'" :size="100" />
+      <p v-if="isLoading">Loading</p>
     </div>
 
     <template v-if="asset.id">
@@ -26,23 +26,23 @@
             </li>
             <li class="flex justify-between">
               <b class="text-gray-600 mr-10 uppercase">Precio actual</b>
-              <span>{{ asset.priceUsd | dollar }}</span>
+              <span>{{ $filters.dollarFilter(asset.priceUsd) }}</span>
             </li>
             <li class="flex justify-between">
               <b class="text-gray-600 mr-10 uppercase">Precio más bajo</b>
-              <span>{{ min | dollar }}</span>
+              <span>{{ $filters.dollarFilter(min) }}</span>
             </li>
             <li class="flex justify-between">
               <b class="text-gray-600 mr-10 uppercase">Precio más alto</b>
-              <span>{{ max | dollar }}</span>
+              <span>{{ $filters.dollarFilter(max) }}</span>
             </li>
             <li class="flex justify-between">
               <b class="text-gray-600 mr-10 uppercase">Precio Promedio</b>
-              <span>{{ avg | dollar }}</span>
+              <span>{{ $filters.dollarFilter(avg) }}</span>
             </li>
             <li class="flex justify-between">
               <b class="text-gray-600 mr-10 uppercase">Variación 24hs</b>
-              <span>{{ asset.changePercent24Hr | percent }}</span>
+              <span>{{ $filters.percentFilter(asset.changePercent24Hr) }}</span>
             </li>
           </ul>
         </div>
@@ -88,7 +88,7 @@
           <td>
             <b>{{ m.exchangeId }}</b>
           </td>
-          <td>{{ m.priceUsd | dollar }}</td>
+          <td>{{ $filters.dollarFilter(m.priceUsd) }}</td>
           <td>{{ m.baseSymbol }} / {{ m.quoteSymbol }}</td>
           <td>
             <px-button
@@ -109,8 +109,8 @@
 </template>
 
 <script>
-import api from "../api";
-import PxButton from "../components/PxButton.vue";
+import api from "../api"
+import PxButton from "../components/PxButton.vue"
 
 export default {
   components: { PxButton },
@@ -162,12 +162,12 @@ export default {
 
   watch: {
     $route() {
-      this.getCoin();
+      this.getCoin()
     },
   },
 
   created() {
-    this.getCoin();
+    this.getCoin()
   },
 
   methods: {
@@ -206,7 +206,7 @@ export default {
         .finally(() => (this.isLoading = false));
     },
   },
-};
+}
 </script>
 
 <style scoped>

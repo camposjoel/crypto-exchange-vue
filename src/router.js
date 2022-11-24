@@ -1,14 +1,12 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home'
-import About from './views/About'
-import Error from './views/Error'
-import CoinDetail from './views/CoinDetail'
+import { createRouter, createWebHistory } from 'vue-router'
+import Home from './views/Home.vue'
+import About from './views/About.vue'
+import CoinDetail from './views/CoinDetail.vue'
+// import Error from './views/Error.vue'
 
-Vue.use(Router)
 
-export default new Router({
-  mode: 'history',
+const router = createRouter({
+  history: createWebHistory(),
 
   routes: [
     {
@@ -27,9 +25,10 @@ export default new Router({
       component: CoinDetail
     },
     {
-      path: '*',
-      name: 'error',
-      component: Error
+      path: '/:pathMatch(.*)*',
+      redirect: { name: 'home' }
     }
   ]
 })
+
+export default router
