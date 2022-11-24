@@ -1,5 +1,5 @@
 <template>
-  <table>
+  <table class="shadow-lg">
     <thead>
       <tr class="bg-gray-100 border-b-2 border-gray-400">
         <th></th>
@@ -25,7 +25,7 @@
       <tr
         v-for="a in filteredAssets"
         :key="a.id"
-        class="border-b border-gray-200 hover:bg-gray-100 hover:bg-orange-100"
+        class="border-b border-gray-200 hover:bg-gray-100"
       >
         <td>
           <img
@@ -143,7 +143,7 @@ th {
 @media (min-width: 640px) {
   td,
   th {
-    padding: 20px;
+    padding: 1rem;
     font-size: 1rem;
   }
 

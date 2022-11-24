@@ -1,7 +1,7 @@
 <template>
   <div class="flex-col">
     <div class="flex justify-center">
-      <p v-if="isLoading">Loading</p>
+      <SpinnerLoader v-if="isLoading" :size="40"/>
     </div>
 
     <template v-if="asset.id">
@@ -111,9 +111,10 @@
 <script>
 import api from "../api"
 import PxButton from "../components/PxButton.vue"
+import SpinnerLoader from '../components/SpinnerLoader.vue'
 
 export default {
-  components: { PxButton },
+  components: { PxButton, SpinnerLoader },
   name: "CoinDetail",
 
   data() {

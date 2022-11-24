@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 v-if="isLoading">Loading...</h1>
+    <SpinnerLoader v-if="isLoading" :size="60"/>
     <px-assets-table v-else :assets="assets"></px-assets-table>
   </div>
 </template>
@@ -8,11 +8,12 @@
 <script>
 import api from "../api"
 import PxAssetsTable from "../components/PxAssetsTable.vue"
+import SpinnerLoader from '../components/SpinnerLoader.vue'
 
 export default {
   name: "Home",
 
-  components: { PxAssetsTable },
+  components: { PxAssetsTable, SpinnerLoader },
 
   data() {
     return {
